@@ -8,6 +8,7 @@
     "bus:browse": "node src/servicebus/subscription-browse",
     "bus:receive": "node src/servicebus/subscription-receive",
     "bus:receiveStream": "node src/servicebus/subscription-receiveStream",
+    "bus:topicfilters": "node src/servicebus/topicfilters",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

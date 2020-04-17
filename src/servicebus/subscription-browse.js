@@ -10,7 +10,7 @@ const subscriptionClient = sbClient.createSubscriptionClient(topicName, subscrip
 
 async function browse (maxMessageCount) {
   try {
-    // browse the top 5 message in queue
+    // browse the top n message in queue
     const messages = await subscriptionClient.peek(maxMessageCount)
     console.log('>> browsing:', messages.map(({ body, label, messageId }) => ({ body, label, messageId })))
     await subscriptionClient.close()

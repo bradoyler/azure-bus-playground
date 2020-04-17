@@ -15,7 +15,7 @@ async function send (eventCount = 1) {
     const msg = {
       label: 'TEST', // similar to SNS/AMQP subject
       userProperties: {
-        myProp: 1
+        priority: 1
       },
       body: { id: num, ts: new Date() }
       // messageId: '', // for deduping
