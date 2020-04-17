@@ -21,5 +21,5 @@ async function listen (maxMessageCount, maxWaitTimeInSeconds = 2) {
   }
 }
 
-const count = Number(process.argv[2])
+const count = Number(process.argv[2]) || 1
 listen(count)

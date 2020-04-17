@@ -8,11 +8,11 @@ const sbClient = ServiceBusClient.createFromConnectionString(connectionString)
 // NOTE: idea here is to create a test subscription that has a 'label=TEST' filter
 const subscriptionClient = sbClient.createSubscriptionClient(topicName, subscriptionName)
 
-async function browse (maxMessageCount = 1) {
+async function browse (maxMessageCount) {
   try {
     // browse the top 5 message in queue
     const messages = await subscriptionClient.peek(maxMessageCount)
-    console.log('>> browsed:', messages.map(({ body, label, messageId }) => ({ body, label, messageId })))
+    console.log('>> browsing:', messages.map(({ body, label, messageId }) => ({ body, label, messageId })))
     await subscriptionClient.close()
   } catch (ex) {
     console.error('ERR:', ex)
@@ -22,5 +22,5 @@ async function browse (maxMessageCount = 1) {
   }
 }
 
-const count = Number(process.argv[2])
+const count = Number(process.argv[2]) || 1
 browse(count)

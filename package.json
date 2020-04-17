@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bus:send": "node src/servicebus/send",
-    "bus:browse": "node src/servicebus/browse",
-    "bus:receive": "node src/servicebus/receive",
+    "bus:send": "node src/servicebus/topic-send",
+    "bus:browse": "node src/servicebus/subscription-browse",
+    "bus:receive": "node src/servicebus/subscription-receive",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
