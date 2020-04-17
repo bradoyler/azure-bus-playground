@@ -1,0 +1,45 @@
+{
+  "name": "azure-sdk-js-examples",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bus:send": "node src/servicebus/send",
+    "bus:browse": "node src/servicebus/browse",
+    "bus:receive": "node src/servicebus/receive",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradoyler/azure-bus-playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradoyler/azure-bus-playground/issues"
+  },
+  "homepage": "https://github.com/bradoyler/azure-bus-playground#readme",
+  "dependencies": {
+    "@azure/cosmos": "^3.6.3",
+    "@azure/event-hubs": "^5.1.0",
+    "@azure/event-processor-host": "^2.1.1",
+    "@azure/eventhubs-checkpointstore-blob": "^1.0.0",
+    "@azure/service-bus": "^1.1.5",
+    "@azure/storage-blob": "^12.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-chai-expect": "^2.0.1",
+    "eslint-plugin-expect-type": "0.0.3",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-mocha": "^6.1.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^6.2.0"
+  }
+}
