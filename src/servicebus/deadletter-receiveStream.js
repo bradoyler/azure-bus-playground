@@ -9,13 +9,12 @@ const subscriptionName = process.env.SUBSCRIPTION_NAME
 const sbClient = ServiceBusClient.createFromConnectionString(connectionString)
 
 let msgCounter = 0
+let lastCount = 0
+let enqueuedTimeUtc
 
 const onMessageHandler = async (message) => {
-  const { enqueuedTimeUtc } = message
-  process.stdout.clearLine()
-  process.stdout.cursorTo(0)
+  enqueuedTimeUtc = new Date(message.enqueuedTimeUtc)
   msgCounter++
-  process.stdout.write(`Receiving ${entityType} stream: ${entityName} # ${msgCounter}: ${enqueuedTimeUtc}`)
 }
 const onErrorHandler = (err) => {
   console.log('Error occurred: ', err)
@@ -36,8 +35,16 @@ async function receiveDeadletters () {
     return console.log(`You must set ${entityType} options`)
   }
 
+  setInterval(() => {
+    process.stdout.clearLine()
+    process.stdout.cursorTo(0)
+    const rate = (msgCounter - lastCount)
+    process.stdout.write(`Receiving ${entityType} stream: ${entityName} # ${msgCounter}: ${enqueuedTimeUtc}, msgs/sec: ${rate}`)
+    lastCount = msgCounter
+  }, 1000)
+
   receiver.registerMessageHandler(onMessageHandler, onErrorHandler, {
-    maxConcurrentCalls: 40, // for more throughput
+    maxConcurrentCalls: 50, // for more throughput
     autoComplete: true // dequeues the message automatically
   })
 }
