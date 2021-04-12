@@ -7,6 +7,7 @@
     "bus:send": "node src/servicebus/topic-send",
     "bus:browse": "node src/servicebus/subscription-browse",
     "bus:receive": "node src/servicebus/subscription-receive",
+    "bus:receive:deadletters": "node src/servicebus/receiveDeadLetters",
     "bus:receiveStream": "node src/servicebus/subscription-receiveStream",
     "bus:topicfilters": "node src/servicebus/topicfilters",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,7 +27,7 @@
     "@azure/event-hubs": "^5.1.0",
     "@azure/event-processor-host": "^2.1.1",
     "@azure/eventhubs-checkpointstore-blob": "^1.0.0",
-    "@azure/service-bus": "^1.1.5",
+    "@azure/service-bus": "1.1.10",
     "@azure/storage-blob": "^12.1.1"
   },
   "devDependencies": {
