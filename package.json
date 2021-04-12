@@ -7,7 +7,7 @@
     "bus:send": "node src/servicebus/topic-send",
     "bus:browse": "node src/servicebus/subscription-browse",
     "bus:receive": "node src/servicebus/subscription-receive",
-    "bus:receive:deadletters": "node src/servicebus/receiveDeadLetters",
+    "bus:receive:deadletters": "node src/servicebus/deadletter-receiveStream",
     "bus:receiveStream": "node src/servicebus/subscription-receiveStream",
     "bus:topicfilters": "node src/servicebus/topicfilters",
     "test": "echo \"Error: no test specified\" && exit 1"

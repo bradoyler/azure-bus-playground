@@ -32,7 +32,7 @@ async function receiveDeadletters () {
     return console.log(`You must set ${entityType} options`)
   }
 
-  const messages = await receiver.receiveMessages(dlReceiveSize)
+  const messages = await receiver.receiveMessages(dlReceiveSize, 60)
 
   if (messages.length > 0) {
     console.log(`## Rcvd ${messages.length} messages from ${entityName} ${entityType} DLQ:`, new Date(messages[0]._amqpMessage.creation_time))
