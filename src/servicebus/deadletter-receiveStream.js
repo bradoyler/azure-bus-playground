@@ -5,6 +5,7 @@ const entityType = process.env.ENTITY_TYPE || 'topic' // or 'queue'
 const connectionString = process.env.SERVICEBUS_CONNECTION_STRING || '<connection string>'
 const entityName = process.env.ENTITY_NAME || '<topic/queue name>'
 const subscriptionName = process.env.SUBSCRIPTION_NAME
+const streamConcurrency = parseInt(process.env.STREAM_CONCURRENCY) || 60
 
 const sbClient = ServiceBusClient.createFromConnectionString(connectionString)
 
@@ -35,6 +36,7 @@ async function receiveDeadletters () {
     return console.log(`You must set ${entityType} options`)
   }
 
+  // interval Logger for better perf
   setInterval(() => {
     process.stdout.clearLine()
     process.stdout.cursorTo(0)
@@ -44,7 +46,7 @@ async function receiveDeadletters () {
   }, 1000)
 
   receiver.registerMessageHandler(onMessageHandler, onErrorHandler, {
-    maxConcurrentCalls: 50, // for more throughput
+    maxConcurrentCalls: streamConcurrency, // for more throughput
     autoComplete: true // dequeues the message automatically
   })
 }
