@@ -23,7 +23,7 @@ async function receiveDeadletters () {
   if (entityType === 'queue') {
     const deadLetterQueueName = QueueClient.getDeadLetterQueuePath(entityName)
     entityClient = sbClient.createQueueClient(deadLetterQueueName)
-    receiver = entityClient.createReceiver(ReceiveMode.peekLock)
+    receiver = entityClient.createReceiver(ReceiveMode.receiveAndDelete)
   } else if (entityType === 'topic' && subscriptionName) {
     const deadLetterQueueName = TopicClient.getDeadLetterTopicPath(entityName, subscriptionName)
     entityClient = sbClient.createSubscriptionClient(deadLetterQueueName)
