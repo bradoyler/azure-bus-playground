@@ -4,7 +4,7 @@ const { ServiceBusClient, ReceiveMode, QueueClient, TopicClient } = require('@az
 const entityType = process.env.ENTITY_TYPE || 'topic' // or 'queue'
 const connectionString = process.env.SERVICEBUS_CONNECTION_STRING || '<connection string>'
 const entityName = process.env.ENTITY_NAME || '<topic/queue name>'
-const subscriptionName = process.env.SUBSCRIPTION_NAME
+const subscriptionName = process.env.SUBSCRIPTION_NAME || ''
 const streamConcurrency = parseInt(process.env.STREAM_CONCURRENCY) || 60
 
 const sbClient = ServiceBusClient.createFromConnectionString(connectionString)
@@ -41,7 +41,7 @@ async function receiveDeadletters () {
     process.stdout.clearLine()
     process.stdout.cursorTo(0)
     const rate = (msgCounter - lastCount)
-    process.stdout.write(`Receiving ${entityType} stream: ${entityName} # ${msgCounter}: ${enqueuedTimeUtc}, msgs/sec: ${rate}`)
+    process.stdout.write(`Receiving ${entityType} stream: ${entityName}/${subscriptionName} # ${msgCounter}: ${enqueuedTimeUtc}, msgs/sec: ${rate}`)
     lastCount = msgCounter
   }, 1000)
 

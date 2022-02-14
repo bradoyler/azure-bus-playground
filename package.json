@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "hub:send": "node src/eventhub/send",
     "bus:send": "node src/servicebus/topic-send",
     "bus:browse": "node src/servicebus/subscription-browse",
     "bus:receive": "node src/servicebus/subscription-receive",
